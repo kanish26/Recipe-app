@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Data
+data/
+*.csv
+*.json
+!package.json
+!package-lock.json
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
