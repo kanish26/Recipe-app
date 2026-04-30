@@ -21,7 +21,7 @@ export default function RecipeDetail() {
   if (!recipe) return <div className="p-10"><LoadingState label="Loading recipe..." /></div>;
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10">
+    <div className="mx-auto max-w-3xl px-4 py-6 sm:py-10">
       <button
         onClick={() => navigate(-1)}
         className="text-sm text-indigo-600 hover:underline"
@@ -30,7 +30,7 @@ export default function RecipeDetail() {
       </button>
 
       <div className="mt-4 flex items-start justify-between gap-4">
-        <h1 className="text-3xl font-bold text-gray-900 capitalize">{recipe.title}</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 capitalize">{recipe.title}</h1>
         {pct != null && (
           <span className="shrink-0 rounded-full bg-indigo-50 text-indigo-700 px-3 py-1 text-sm font-medium">
             {pct}% match

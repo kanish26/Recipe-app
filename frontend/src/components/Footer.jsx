@@ -1,7 +1,7 @@
 export default function Footer() {
   const mailto = "mailto:feedback@example.com?subject=Recipe%20Vibes%20Feedback";
   return (
-    <footer id="disclaimer" className="mt-16 border-t border-gray-200 bg-white">
+    <footer id="disclaimer" className="mt-10 sm:mt-16 border-t border-gray-200 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-8 grid gap-6 sm:grid-cols-2">
         <div>
           <h3 className="font-semibold text-gray-900">Disclaimer</h3>
