@@ -24,7 +24,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="text-center text-xs text-gray-500 py-4 border-t border-gray-100">
-        © {new Date().getFullYear()} Recipe Vibes · Built with FastAPI, Supabase, and Ollama
+        © {new Date().getFullYear()} Recipe Vibes · Built by Kanish Godani with FastAPI, Supabase, and Ollama
       </div>
     </footer>
   );
