@@ -1,0 +1,9 @@
+# Local-only: data pipeline + ingestion. NOT installed in production.
+# Install with: pip install -r requirements-pipeline.txt
+-r requirements.txt
+langchain>=0.3
+kaggle>=1.6
+pandas>=2.2
+numpy>=1.26
+tqdm>=4.66
+pyarrow>=17.0

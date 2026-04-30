@@ -12,7 +12,7 @@ class VibeSearchRequest(BaseModel):
     inventory: list[str] = Field(default_factory=list, description="Ingredients the user already has")
     vibes_filter: list[str] | None = Field(default=None, description="Optional strict vibe tag filter")
     diet: Diet = Field(default="any", description="Dietary preference")
-    limit: int = Field(default=10, ge=1, le=50)
+    limit: int = Field(default=10, ge=1, le=20)
 
 
 class VibeSearchResponse(BaseModel):
