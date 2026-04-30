@@ -37,21 +37,26 @@ def provider() -> str:
     return _provider
 
 
-def generate(prompt: str, system: str | None = None) -> str:
+def generate(prompt: str, system: str | None = None, max_tokens: int | None = None) -> str:
     messages = []
     if system:
         messages.append({"role": "system", "content": system})
     messages.append({"role": "user", "content": prompt})
 
     if _provider == "groq":
-        resp = _groq_client.chat.completions.create(model=GROQ_MODEL, messages=messages)
+        resp = _groq_client.chat.completions.create(
+            model=GROQ_MODEL, messages=messages, max_tokens=max_tokens
+        )
         return resp.choices[0].message.content
 
     if _provider == "cerebras":
-        resp = _cerebras_client.chat.completions.create(model=CEREBRAS_MODEL, messages=messages)
+        resp = _cerebras_client.chat.completions.create(
+            model=CEREBRAS_MODEL, messages=messages, max_tokens=max_tokens
+        )
         return resp.choices[0].message.content
 
-    resp = _ollama_client.chat(model=OLLAMA_MODEL, messages=messages)
+    options = {"num_predict": max_tokens} if max_tokens else {}
+    resp = _ollama_client.chat(model=OLLAMA_MODEL, messages=messages, options=options)
     return resp["message"]["content"]
 
 

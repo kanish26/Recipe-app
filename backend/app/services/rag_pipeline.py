@@ -99,12 +99,12 @@ def narrate(vibe: str, recipes: list[Recipe]) -> str:
     if not recipes:
         return "No recipes matched that vibe yet."
     top = recipes[:3]
-    bullets = "\n".join(f"- {r.title} (vibes: {', '.join(r.vibes)})" for r in top)
+    bullets = "\n".join(f"- {r.title}" for r in top)
     prompt = (
-        f"A user is craving '{vibe}'. In 2-3 warm sentences, recommend these recipes "
-        f"and hint why they fit the vibe. No preamble, no list format.\n\n{bullets}"
+        f"User craving: '{vibe}'. In ONE short sentence (max 25 words), recommend the top pick and why it fits. "
+        f"No preamble, no lists, no quotes.\n\n{bullets}"
     )
     try:
-        return llm_service.generate(prompt).strip()
+        return llm_service.generate(prompt, max_tokens=60).strip()
     except Exception:
         return f"Try {top[0].title} — it fits '{vibe}' perfectly."
