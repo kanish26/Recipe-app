@@ -1,4 +1,5 @@
 from __future__ import annotations
+import time
 from fastapi import APIRouter, HTTPException
 
 from app.models.recipe import Recipe
@@ -11,8 +12,12 @@ router = APIRouter(prefix="/recipes", tags=["recipes"])
 
 @router.post("/by-vibe", response_model=VibeSearchResponse)
 def by_vibe(req: VibeSearchRequest) -> VibeSearchResponse:
+    t0 = time.perf_counter()
     recipes = rag_pipeline.search(req.vibe, req.inventory, req.vibes_filter, req.diet, req.limit)
+    t1 = time.perf_counter()
     narrative = rag_pipeline.narrate(req.vibe, recipes) if recipes else None
+    t2 = time.perf_counter()
+    print(f"[timing] search={t1-t0:.2f}s narrate={t2-t1:.2f}s total={t2-t0:.2f}s", flush=True)
     return VibeSearchResponse(
         query=req.vibe,
         matched_vibes=rag_pipeline.match_vibes(req.vibe),
