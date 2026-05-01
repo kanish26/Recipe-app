@@ -18,7 +18,7 @@ export default function Home() {
     <div className="mx-auto max-w-6xl px-4 py-6 sm:py-10">
       <header className="mb-6 sm:mb-8">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Recipe Vibes</h1>
-        <p className="mt-2 text-sm sm:text-base text-gray-600">Tell us the mood — get recipes that match it.</p>
+        <p className="mt-2 text-sm sm:text-base text-gray-600">Tell us the mood — get recipes that match it. (Vibe % match may vary due to limited dataset and query latency due to API response times) </p>
       </header>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
